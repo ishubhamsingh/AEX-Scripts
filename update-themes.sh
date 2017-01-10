@@ -57,7 +57,7 @@ function copy_all () {
   done
 }
 
-declare -a root=('DU-Scripts' 'abi' 'bionic' 'art' 'bootable' 'build' 'dalvik' 'development' 'device' 'external' 'frameworks' 'hardware' 'kernel' 'libcore' 'libnativehelper' 'manifest' 'ndk' 'out' 'packages' 'pdk' 'prebuilts'
+declare -a root=('abi' 'bionic' 'art' 'bootable' 'build' 'dalvik' 'development' 'device' 'external' 'frameworks' 'hardware' 'kernel' 'libcore' 'libnativehelper' 'manifest' 'ndk' 'out' 'packages' 'pdk' 'prebuilts'
                  'sdk' 'system' 'tools' 'vendor')
 
 declare -a frameworks=('api' 'cmds' 'data' 'docs' 'drm' 'graphics' 'include' 'keystore' 'libs' 'location' 'media' 'native' 'nfc-extras' 'obex' 'opengl' 'policy' 'rs' 'samples' 'sax' 'security-bridge' 'services' 'telecomm'
@@ -81,8 +81,8 @@ declare -a values=('all_search_engines.xml' 'appmsg_colors.xml' 'arrays.xml' 'at
 
 declare -a core=('java' 'jni' 'tests' 'src')
 
-declare -a theme_packages=('Calculator' 'Calendar' 'CalendarWidget' 'Camera2' 'Contacts' 'ContactsCommon' 'DUI' 'DU-Tweaks' 'DeskClock' 'Dialer' 'Gallery2'
-                           'Launcher3' 'Messaging' 'OmniSwitch' 'PhoneCommon' 'Settings' 'Stk')
+declare -a theme_packages=('Calendar'  'Camera2' 'Contacts' 'ContactsCommon' 'DeskClock' 'Dialer' 'Gallery2'
+                           'Messaging' 'OmniSwitch' 'PhoneCommon' 'Settings' 'Stk')
 
 declare -a extra=('java' '.idea' 'gradle' '.gitignore' 'build.gradle' 'gradlew' 'gradlew.bat' 'local.properties' 'proguard-rules.pro' 'proguard.flags')
 
