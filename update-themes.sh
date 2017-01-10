@@ -70,7 +70,7 @@ declare -a common=('common.mk' '.classpath' '.git' '.gitignore' '.idea' '.projec
 
 declare -a packages=('StatementService' 'BackupRestoreConfirmation' 'CaptivePortalLogin' 'DefaultContainerService' 'ExternalStorageProvider' 'FakeOemFeatures' 'FusedLocation' 'InputDevices' 'Keyguard' 'PrintSpooler' 'SettingsProvider'
                      'SharedStorageBackup' 'Shell' 'VpnDialogs' 'WAPPushManager' 'WAPPushManager' 'WallpaperCropper' 'services' 'WallpaperBackup' 'PrintRecommendationService' 'Osu' 'MtpDocumentsProvider' 'ExtShared' 'ExtServices' 'CtsShim'
-                     'AicpExtras' 'AICP_OTA')
+                     )
 
 declare -a res=('Android.mk' 'AndroidManifest.xml' 'MODULE_LICENSE_APACHE2' 'NOTICE' 'lint.xml' 'assets' 'menu*' 'values-*' 'xml*' 'interpolator' 'raw*' 'anim*' 'animator' 'transition' 'MakeJavaSymbols.sed' 'tests' 'src' 'build.gradle' 'proguard.flags' 'setting' 'gradlew' 'gradlew.bat')
 
@@ -83,7 +83,7 @@ declare -a values=('all_search_engines.xml' 'appmsg_colors.xml' 'arrays.xml' 'at
 declare -a core=('java' 'jni' 'tests' 'src')
 
 declare -a theme_packages=('Calendar'  'Camera2' 'Contacts' 'ContactsCommon' 'DeskClock' 'Dialer' 'Gallery2'
-                           'Messaging' 'OmniSwitch' 'PhoneCommon' 'Settings' 'Stk')
+                           'Messaging' 'OmniSwitch' 'PhoneCommon' 'Settings' 'Stk' 'AicpExtras' 'AICP_OTA' 'DUI')
 
 declare -a extra=('java' '.idea' 'gradle' '.gitignore' 'build.gradle' 'gradlew' 'gradlew.bat' 'local.properties' 'proguard-rules.pro' 'proguard.flags')
 
