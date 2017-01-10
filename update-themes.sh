@@ -90,7 +90,7 @@ cd $WORKING_DIR
 echo "Removing files so we can clean sync"
 delete_useless ${root[@]}
 cd .repo
-rm -rf local_manifests
+#rm -rf local_manifests
 cd ..
 echo "Repo Syncing........."
 repo sync --force-sync >> /dev/null
