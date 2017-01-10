@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-WORKING_DIR=/home/mazda/du
+WORKING_DIR=/Android/SOURCE/AICP/n7.1
 
 function delete_useless () {
   declare -a array=($@)
@@ -53,7 +53,7 @@ function copy_all () {
   for i in `seq 0 $(( ${#array[@]} - 1 ))`
   do
     cd $WORKING_DIR/packages/apps
-    cp -r ${array[i]} $WORKING_DIR/DU-Scripts/themes-resources/packages/apps/
+    cp -r ${array[i]} $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/
   done
 }
 
@@ -101,7 +101,7 @@ else
   exit 1
 fi
 echo "Cloning Theme Resources repo"
-git clone https://github.com/DirtyUnicorns/DU-Scripts.git
+git clone https://github.com/Zipsnet/AICP-Scripts.git
 echo "Removing unneeded files"
 cd frameworks/base
 delete_useless ${frameworks[@]}
@@ -140,26 +140,26 @@ cd res
 delete_useless ${res[@]}
 cd values
 delete_useless ${values[@]}
-rm -rf  $WORKING_DIR/DU-Scripts/themes-resources/frameworks
+rm -rf  $WORKING_DIR/AICP-Scripts/themes-resources/frameworks
 cd $WORKING_DIR
-cd packages/apps/DU-Updater
-delete_useless ${common[@]}
-cd $WORKING_DIR/packages/apps/DU-Updater/app/src/main
-delete_useless ${extra[@]}
-cd $WORKING_DIR/packages/apps/DU-Updater/app/
-delete_useless ${extra[@]}
+#cd packages/apps/DU-Updater
+#delete_useless ${common[@]}
+#cd $WORKING_DIR/packages/apps/DU-Updater/app/src/main
+#delete_useless ${extra[@]}
+#cd $WORKING_DIR/packages/apps/DU-Updater/app/
+#delete_useless ${extra[@]}
 cd $WORKING_DIR
 process_all ${theme_packages[@]}
 echo "Cleaning target folders"
-rm -rf DU-Scripts/themes-resources/packages
-mkdir DU-Scripts/themes-resources/packages
-mkdir DU-Scripts/themes-resources/packages/apps
-mkdir DU-Scripts/themes-resources/frameworks
-echo "Copying all files to $WORKING_DIR/DU-Scripts/themes-resources"
-cp -r $WORKING_DIR/packages/apps/DU-Updater $WORKING_DIR/DU-Scripts/themes-resources/packages/apps/
+rm -rf AICP-Scripts/themes-resources/packages
+mkdir AICP-Scripts/themes-resources/packages
+mkdir AICP-Scripts/themes-resources/packages/apps
+mkdir AICP-Scripts/themes-resources/frameworks
+echo "Copying all files to $WORKING_DIR/AICP-Scripts/themes-resources"
+#cp -r $WORKING_DIR/packages/apps/DU-Updater $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/
 copy_all ${theme_packages[@]}
-cp -r $WORKING_DIR/frameworks/base/core $WORKING_DIR/frameworks/base/packages $WORKING_DIR/DU-Scripts/themes-resources/frameworks
-cd /home/mazda/du/DU-Scripts/themes-resources
+cp -r $WORKING_DIR/frameworks/base/core $WORKING_DIR/frameworks/base/packages $WORKING_DIR/AICP-Scripts/themes-resources/frameworks
+cd /Android/SOURCE/AICP/n7.1/AICP-Scripts/themes-resources
 cd $WORKING_DIR/DU-Scripts/themes-resources/packages/apps/Dialer/InCallUI
 delete_useless ${res[@]}
 cd $WORKING_DIR/DU-Scripts/themes-resources
