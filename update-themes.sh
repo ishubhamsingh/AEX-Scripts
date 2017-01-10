@@ -101,7 +101,7 @@ else
   exit 1
 fi
 echo "Cloning Theme Resources repo"
-git clone https://github.com/Zipsnet/AICP-Scripts.git
+git clone https://github.com/Miccia94/AICP-Scripts.git
 echo "Removing unneeded files"
 cd frameworks/base
 delete_useless ${frameworks[@]}
