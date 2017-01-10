@@ -69,7 +69,8 @@ declare -a common=('common.mk' '.classpath' '.git' '.gitignore' '.idea' '.projec
                    'cyanoden-dsp' 'emailcommon' 'transition' 'TestCommon' 'provider_src' 'gallerycommon' 'jni_jpegstream' 'apptests' 'libs' 'info_lookup' 'src_plugin' 'perf-tests' 'app-perf-tests' 'src-N' 'src-pre-N' 'build-app.gradle' 'build-library.gradle' 'local.properties' 'gradlew.bat' 'gradlew' 'gradle' 'build.gradle' '.idea' 'settings.gradle' 'gradle.properties' 'proguard-rules.pro' 'v' '*.jar' 'build' 'ForceProguard.mk' 'proguard-release.flags' 'Readme.md')
 
 declare -a packages=('StatementService' 'BackupRestoreConfirmation' 'CaptivePortalLogin' 'DefaultContainerService' 'ExternalStorageProvider' 'FakeOemFeatures' 'FusedLocation' 'InputDevices' 'Keyguard' 'PrintSpooler' 'SettingsProvider'
-                     'SharedStorageBackup' 'Shell' 'VpnDialogs' 'WAPPushManager' 'WAPPushManager' 'WallpaperCropper' 'services' 'WallpaperBackup' 'PrintRecommendationService' 'Osu' 'MtpDocumentsProvider' 'ExtShared' 'ExtServices' 'CtsShim')
+                     'SharedStorageBackup' 'Shell' 'VpnDialogs' 'WAPPushManager' 'WAPPushManager' 'WallpaperCropper' 'services' 'WallpaperBackup' 'PrintRecommendationService' 'Osu' 'MtpDocumentsProvider' 'ExtShared' 'ExtServices' 'CtsShim'
+                     'AicpExtras' 'AICP_OTA')
 
 declare -a res=('Android.mk' 'AndroidManifest.xml' 'MODULE_LICENSE_APACHE2' 'NOTICE' 'lint.xml' 'assets' 'menu*' 'values-*' 'xml*' 'interpolator' 'raw*' 'anim*' 'animator' 'transition' 'MakeJavaSymbols.sed' 'tests' 'src' 'build.gradle' 'proguard.flags' 'setting' 'gradlew' 'gradlew.bat')
 
