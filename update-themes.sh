@@ -160,6 +160,6 @@ echo "Copying all files to $WORKING_DIR/AICP-Scripts/themes-resources"
 copy_all ${theme_packages[@]}
 cp -r $WORKING_DIR/frameworks/base/core $WORKING_DIR/frameworks/base/packages $WORKING_DIR/AICP-Scripts/themes-resources/frameworks
 cd /Android/SOURCE/AICP/n7.1/AICP-Scripts/themes-resources
-cd $WORKING_DIR/DU-Scripts/themes-resources/packages/apps/Dialer/InCallUI
+cd $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/Dialer/InCallUI
 delete_useless ${res[@]}
-cd $WORKING_DIR/DU-Scripts/themes-resources
+cd $WORKING_DIR/AICP-Scripts/themes-resources
