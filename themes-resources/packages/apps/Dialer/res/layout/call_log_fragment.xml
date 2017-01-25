@@ -15,41 +15,19 @@
 -->
 
 <!-- Layout parameters are set programmatically. -->
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:design="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_dialer_call_log"
-    design:statusBarBackground="@null">
+    android:background="@color/background_dialer_call_log">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stateListAnimator="@null"
-        android:elevation="2dp">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            design:layout_scrollFlags="scroll|enterAlways">
-
-            <include layout="@layout/call_spinner" />
-
-        </FrameLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <android.support.v7.widget.RecyclerView android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_dialer_call_log"
         android:clipToPadding="false"
         android:paddingStart="@dimen/call_log_horizontal_margin"
         android:paddingEnd="@dimen/call_log_horizontal_margin"
-        android:paddingBottom="@dimen/floating_action_button_list_bottom_padding"
-        design:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:paddingBottom="@dimen/floating_action_button_list_bottom_padding" />
 
     <com.android.dialer.widget.EmptyContentView
         android:id="@+id/empty_list_view"
@@ -58,4 +36,4 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

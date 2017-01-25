@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright (c) 2016 AICP
-
+    Copyright (c) 2015 SlimRoms
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
-
         http://www.apache.org/licenses/LICENSE-2.0
-
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="88"
-    android:viewportHeight="88">
-
-    <path
-        android:fillColor="@color/icon_color_ime_switcher"
-        android:pathData="M16.11,16.11C34.41,15.87 52.74,16.05 71.05,16.02C74.76,15.94 77.25,20.45 75.4,23.61C66.61,39.03 57.76,54.44 48.87,69.8C46.91,72.92 42.05,72.85 39.97,69.88C30.84,54.46 21.66,39.05 12.58,23.61C10.99,20.69 12.76,16.63 16.11,16.11Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="21.755981dip" android:height="16.0dip"
+    android:viewportHeight="16.0" android:viewportWidth="21.756">
+    <path android:fillColor="#fff"
+        android:pathData="m10.914 0.0019531c-6.6341 0.002419-9.8362 0.007157-9.9003 0.015625-0.35313 0.04595-0.68331 0.24026-0.85745 0.5039-0.11488 0.17172-0.15625 0.30485-0.15625 0.50192 0 0.1874 0.040998 0.3265 0.14258 0.4825 0.0266 0.0423 1.3669 1.9769 2.9765 4.2988 1.6096 2.3207 3.7858 5.4593 4.8379 6.9763 2.0123 2.903 1.983 2.864 2.152 2.979 0.191 0.129 0.372 0.195 0.649 0.234 0.075 0.011 0.243 0.005 0.346-0.01 0.311-0.048 0.563-0.172 0.75-0.369 0.054-0.058 0.433-0.599 1.179-1.681 0.607-0.878 2.789-4.0397 4.848-7.0219 2.058-2.9834 3.764-5.4633 3.789-5.5117 0.064-0.1294 0.086-0.2327 0.086-0.3887-0.002-0.15596-0.022-0.24371-0.09-0.38279-0.147-0.30233-0.454-0.5223-0.85-0.60938-0.095-0.020557-0.447-0.021205-9.902-0.017577z" />
 </vector>
+

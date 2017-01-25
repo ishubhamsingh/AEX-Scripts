@@ -107,7 +107,7 @@
     <!-- Color of the event location's text in an agenda item  -->
     <color name="agenda_item_where_declined_text_color">#66666666</color>
     <!-- Color of text in the calendar view selection menu -->
-    <color name="calendar_view_switch_menu_text_color">#FF000000</color>
+    <color name="calendar_view_switch_menu_text_color">#FF666666</color>
     <!-- Light color of text in the calendar view selection menu -->
     <color name="calendar_view_switch_menu_text_color_light">#FF888888</color>
     <!-- Color of the separator between items in the agenda list -->
@@ -163,7 +163,7 @@
     <color name="appwidget_title">#ffffffff</color>
     <color name="appwidget_when">#ffffffff</color>
     <color name="appwidget_where">#ffffffff</color>
-    <color name="appwidget_no_events">#89000000</color>
+    <color name="appwidget_no_events">#ffffffff</color>
 
     <color name="recurrence_picker_background">#fff2f2f2</color>
     <color name="recurrence_bubble_text_normal">#ff737373</color>

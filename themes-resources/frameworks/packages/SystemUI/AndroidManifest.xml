@@ -41,11 +41,9 @@
     <uses-permission android:name="android.permission.MANAGE_USERS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CONFIGURE_WIFI_DISPLAY" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.GET_APP_OPS_STATS" />
-
-    <!-- Screen recording -->
-    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
 
     <!-- Networking and telephony -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -114,6 +112,8 @@
     <uses-permission android:name="android.permission.TRUST_LISTENER" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.RESET_FINGERPRINT_LOCKOUT" />
+    <uses-permission android:name="com.cyanogenmod.lockclock.permission.READ_WEATHER" />
+    <protected-broadcast android:name="com.cyanogenmod.lockclock.action.FORCE_WEATHER_UPDATE" />
 
     <!-- Needed for WallpaperManager.clear in ImageWallpaper.updateWallpaperLocked -->
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
@@ -164,9 +164,11 @@
     <!-- the ability to rename notifications posted by other apps -->
     <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME" />
 
-    <!-- manage cmsettings -->
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SECURE_SETTINGS" />
+    <!-- shortcut manager -->
+    <uses-permission android:name="android.permission.RESET_SHORTCUT_MANAGER_THROTTLING" />
+
+    <!-- Screen recording -->
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
 
     <!-- Sync tile -->
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
@@ -181,14 +183,6 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
-
-    <!-- shortcut manager -->
-    <uses-permission android:name="android.permission.RESET_SHORTCUT_MANAGER_THROTTLING" />
-
-    <!-- Locale QS -->
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-
-    <!-- AppSidebar -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
 
     <application
@@ -225,9 +219,16 @@
 
 
         <!-- started from PhoneWindowManager
-             TODO: Should have an android:permission attribute -->
+             TODO: Should have an android:permission attribute
+             -->
         <service android:name=".screenshot.TakeScreenshotService"
             android:process=":screenshot"
+            android:exported="false" />
+
+        <!-- started from PhoneWindowManager
+             TODO: Should have an android:permission attribute -->
+        <service android:name=".purenexus.screenrecord.TakeScreenrecordService"
+            android:process=":screenrecord"
             android:exported="false" />
 
         <!-- Called from PhoneWindowManager -->
@@ -239,38 +240,28 @@
             </intent-filter>
         </receiver>
 
-        <!-- started from PhoneWindowManager
-             TODO: Should have an android:permission attribute -->
-        <service android:name=".omni.screenrecord.TakeScreenrecordService"
-            android:process=":screenrecord"
-            android:exported="false" />
-
-        <service android:name=".LoadAverageService"
-                android:exported="true" />
-
-        <service android:name=".CPUInfoService"
-                android:exported="true" />
-
-        <receiver android:name=".BootReceiver" androidprv:systemUserOnly="true">
-            <intent-filter android:priority="1000">
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
         <service android:name=".ImageWallpaper"
                 android:permission="android.permission.BIND_WALLPAPER"
                 android:exported="true" />
 
         <activity android:name=".tuner.TunerActivity"
+                  android:enabled="true"
                   android:icon="@drawable/tuner"
                   android:theme="@style/TunerSettings"
-                  android:label="@string/system_ui_tuner"
+                  android:label="@string/systemui_tuner_statusbar_title"
+                  android:parentActivityName="org.aospextended.extensions.PartsFragment"
                   android:process=":tuner"
                   android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        </activity>
+
+        <activity android:name=".tuner.PNCActivity"
+                  android:enabled="true"
+                  android:icon="@drawable/tuner"
+                  android:theme="@style/TunerSettings"
+                  android:label="@string/systemui_tuner_pnc_title"
+                  android:parentActivityName="org.aospextended.extensions.PartsFragment"
+                  android:process=":tuner"
+                  android:exported="true">
         </activity>
 
         <activity-alias android:name=".DemoMode"
@@ -340,6 +331,15 @@
         <receiver android:name=".screenshot.GlobalScreenshot$DeleteScreenshotReceiver"
                   android:process=":screenshot"
                   android:exported="false" />
+
+        <activity
+            android:name=".cm.LockscreenShortcutsActivity"
+            android:icon="@drawable/tuner"
+            android:label="@string/lockscreen_targets_message"
+            android:theme="@android:style/Theme.Material.Settings"
+            android:process=":cmsettings"
+            android:exported="true">
+        </activity>
 
         <!-- started from UsbDeviceSettingsManager -->
         <activity android:name=".usb.UsbConfirmActivity"
@@ -477,7 +477,7 @@
             android:exported="true"
             android:label="@string/dessert_case"
             android:permission="android.permission.BIND_DREAM_SERVICE"
-            android:enabled="false"
+            android:enabled="true"
             android:process=":sweetsweetdesserts"
             >
             <intent-filter>
@@ -491,24 +491,9 @@
             android:exported="true"
             android:enabled="@bool/config_enableKeyguardService" />
 
-        <activity android:name=".statusbar.sidebar.SidebarConfigurationActivity"
-                  android:label="@string/title_activity_sidebar_configuration"
-                  android:taskAffinity=""
-                  android:excludeFromRecents="true"
-                  android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <provider
-            android:name=".statusbar.sidebar.SidebarContentProvider"
-            android:authorities="org.chameleonos.sidebar.contentprovider" >
-        </provider>
-
         <activity android:name=".Somnambulator"
             android:label="@string/start_dreams"
-            android:icon="@mipmap/ic_launcher_dreams"
+            android:icon="@drawable/icon"
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar"
             android:exported="true"
             android:excludeFromRecents="true"
@@ -536,20 +521,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".settings.NotificationBrightnessDialog"
-            android:label="@string/quick_settings_brightness_dialog_title"
-            android:theme="@android:style/Theme.DeviceDefault.Dialog"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="singleInstance"
-            android:excludeFromRecents="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.SHOW_NOTIFICATION_BRIGHTNESS_DIALOG" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -584,6 +555,5 @@
                 <action android:name="android.intent.action.SHOW_KEYBOARD_SHORTCUTS" />
             </intent-filter>
         </receiver>
-
     </application>
 </manifest>

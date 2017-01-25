@@ -65,7 +65,6 @@
     <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
-    <uses-permission android:name="cyanogenmod.permission.WRITE_SETTINGS" />
 
     <application
         android:name="DialerApplication"
@@ -74,7 +73,7 @@
         android:hardwareAccelerated="true"
         android:supportsRtl="true"
         android:backupAgent='com.android.dialer.DialerBackupAgent'
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="false">
 
         <meta-data android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIBXgtCEKQ6W0PXVnW-ZVia2KmlV2AxsTw3GjAeQ" />
@@ -184,17 +183,6 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:mimeType="vnd.android.cursor.item/calls"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".callstats.CallStatsDetailActivity"
-            android:label="@string/callStatsDetailTitle"
-            android:theme="@style/CallDetailActivityTheme"
-            android:screenOrientation="portrait"
-            android:icon="@mipmap/ic_launcher_phone" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -388,11 +376,6 @@
             android:exported="false"
             android:multiprocess="false"
             />
-
-        <provider android:name="com.android.dialer.lookup.LookupProvider"
-                  android:authorities="com.android.dialer.provider"
-                  android:exported="false"
-                  android:multiprocess="false" />
 
         <activity android:name=".SpeedDialListActivity"
             android:theme="@style/SpeedDialtactsTheme"
