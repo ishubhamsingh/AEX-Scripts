@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-WORKING_DIR=/home/miccia/android/aicp
+WORKING_DIR=/root/aex/
 
 function delete_useless () {
   declare -a array=($@)
@@ -53,11 +53,11 @@ function copy_all () {
   for i in `seq 0 $(( ${#array[@]} - 1 ))`
   do
     cd $WORKING_DIR/packages/apps
-    cp -r ${array[i]} $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/
+    cp -r ${array[i]} $WORKING_DIR/AEX-Scripts/themes-resources/packages/apps/
   done
 }
 
-declare -a root=('AICP-Scripts' 'abi' 'bionic' 'art' 'bootable' 'build' 'dalvik' 'development' 'device' 'external' 'frameworks' 'hardware' 'kernel' 'libcore' 'libnativehelper' 'manifest' 'ndk' 'out' 'packages' 'pdk' 'prebuilts'
+declare -a root=('AEX-Scripts' 'abi' 'bionic' 'art' 'bootable' 'build' 'dalvik' 'development' 'device' 'external' 'frameworks' 'hardware' 'kernel' 'libcore' 'libnativehelper' 'manifest' 'ndk' 'out' 'packages' 'pdk' 'prebuilts'
                  'sdk' 'system' 'tools' 'vendor')
 
 declare -a frameworks=('api' 'cmds' 'data' 'docs' 'drm' 'graphics' 'include' 'keystore' 'libs' 'location' 'media' 'native' 'nfc-extras' 'obex' 'opengl' 'policy' 'rs' 'samples' 'sax' 'security-bridge' 'services' 'telecomm'
@@ -76,14 +76,14 @@ declare -a res=('Android.mk' 'AndroidManifest.xml' 'MODULE_LICENSE_APACHE2' 'NOT
 
 declare -a values=('all_search_engines.xml' 'appmsg_colors.xml' 'arrays.xml' 'attrs_manifest.xml' 'bookmarks_icons.xml' 'bools.xml' 'config.xml' 'defaults.xml' 'donottranslate.xml' 'donottranslate_config.xml'
                    'aliases.xml' 'crop_colors.xml' 'dslv_attrs.xml' 'animation_constants.xml' 'donottranslate-cldr.xml' 'donottranslate-maps.xml' 'donottranslate-names.xml' 'donottranslate_material.xml'
-                   'donottranslate-search_engines.xml' 'aicp_arrays.xml' 'aicp_strings.xml' 'aicp_symbols.xml' 'fractions.xml' 'ids.xml' 'integers.xml' 'internal.xml' 'keys.xml' 'lland_config.xml' 'lland_strings.xml' 'plurals.xml'
+                   'donottranslate-search_engines.xml' 'ex_arrays.xml' 'ex_strings.xml' 'ex_symbols.xml' 'fractions.xml' 'ids.xml' 'integers.xml' 'internal.xml' 'keys.xml' 'lland_config.xml' 'lland_strings.xml' 'plurals.xml'
                    'public.xml' 'strings.xml' 'symbols.xml' 'vpi_attrs.xml' 'vpi_defaults.xml' 'cm_arrays.xml' 'cm_plurals.xml' 'cm_strings.xml' 'custom_strings.xml' 'custom_arrays.xml' 'vpi__defaults.xml' 'vpi__attrs.xml'
                    'nontranslatables.xml' 'accountprovider.xml' 'constants.xml' 'codeaurora_strings.xml' 'filtershow_ids.xml' 'filtershow_strings.xml' 'filtershow_values.xml' 'filtershow_values_attrs.xml')
 
 declare -a core=('java' 'jni' 'tests' 'src')
 
-declare -a theme_packages=('Calendar'  'Camera2' 'Contacts' 'ContactsCommon' 'DeskClock' 'Dialer' 'Gallery2'
-                           'Messaging' 'OmniSwitch' 'PhoneCommon' 'Settings' 'Stk' 'AicpExtras' 'AICP_OTA' 'DUI')
+declare -a theme_packages=('Calculator' 'Calendar'  'Camera2' 'SnapdragonCamera' 'Contacts' 'ContactsCommon' 'DeskClock' 'Dialer' 'Email' 'Gallery2'
+                           'Messaging' 'OmniStyle' 'PhoneCommon' 'Settings' 'Stk' 'Extensions' 'AEXOTA' 'DUI')
 
 declare -a extra=('java' '.idea' 'gradle' '.gitignore' 'build.gradle' 'gradlew' 'gradlew.bat' 'local.properties' 'proguard-rules.pro' 'proguard.flags')
 
@@ -94,7 +94,7 @@ cd .repo
 #rm -rf local_manifests
 cd ..
 echo "Repo Syncing........."
-repo sync --force-sync >> /dev/null
+repo sync -c --force-sync >> /dev/null
 if [ $? -eq 0 ]; then
   echo "Repo Sync success"
 else
@@ -102,7 +102,7 @@ else
   exit 1
 fi
 echo "Cloning Theme Resources repo"
-git clone https://github.com/Miccia94/AICP-Scripts.git
+git clone https://github.com/ishubhamsingh/AEX-Scripts.git -b 7.1.1
 echo "Removing unneeded files"
 cd frameworks/base
 delete_useless ${frameworks[@]}
@@ -141,7 +141,7 @@ cd res
 delete_useless ${res[@]}
 cd values
 delete_useless ${values[@]}
-rm -rf  $WORKING_DIR/AICP-Scripts/themes-resources/frameworks
+rm -rf  $WORKING_DIR/AEX-Scripts/themes-resources/frameworks
 cd $WORKING_DIR
 #cd packages/apps/DU-Updater
 #delete_useless ${common[@]}
@@ -152,15 +152,15 @@ cd $WORKING_DIR
 cd $WORKING_DIR
 process_all ${theme_packages[@]}
 echo "Cleaning target folders"
-rm -rf AICP-Scripts/themes-resources/packages
-mkdir AICP-Scripts/themes-resources/packages
-mkdir AICP-Scripts/themes-resources/packages/apps
-mkdir AICP-Scripts/themes-resources/frameworks
-echo "Copying all files to $WORKING_DIR/AICP-Scripts/themes-resources"
-#cp -r $WORKING_DIR/packages/apps/DU-Updater $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/
+rm -rf AEX-Scripts/themes-resources/packages
+mkdir AEX-Scripts/themes-resources/packages
+mkdir AEX-Scripts/themes-resources/packages/apps
+mkdir AEX-Scripts/themes-resources/frameworks
+echo "Copying all files to $WORKING_DIR/AEX-Scripts/themes-resources"
+#cp -r $WORKING_DIR/packages/apps/DU-Updater $WORKING_DIR/AEX-Scripts/themes-resources/packages/apps/
 copy_all ${theme_packages[@]}
-cp -r $WORKING_DIR/frameworks/base/core $WORKING_DIR/frameworks/base/packages $WORKING_DIR/AICP-Scripts/themes-resources/frameworks
-cd /home/miccia/android/aicp/AICP-Scripts/themes-resources
-cd $WORKING_DIR/AICP-Scripts/themes-resources/packages/apps/Dialer/InCallUI
+cp -r $WORKING_DIR/frameworks/base/core $WORKING_DIR/frameworks/base/packages $WORKING_DIR/AEX-Scripts/themes-resources/frameworks
+cd /root/aex/AEX-Scripts/themes-resources
+cd $WORKING_DIR/AEX-Scripts/themes-resources/packages/apps/Dialer/InCallUI
 delete_useless ${res[@]}
-cd $WORKING_DIR/AICP-Scripts/themes-resources
+cd $WORKING_DIR/AEX-Scripts/themes-resources
